@@ -1,0 +1,126 @@
+---
+import type { Profile, Locale } from "../data/types";
+import { formatYearMonth, useTranslations } from "../i18n/ui";
+
+interface Props {
+  profile: Profile;
+  locale: Locale;
+}
+const { profile, locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="experiencia" class="section" aria-labelledby="experiencia-title">
+  <div class="container">
+    <h2 id="experiencia-title" class="section-title" data-index="02.">
+      {t("experience.title")}
+    </h2>
+    <ol class="timeline">
+      {profile.experiences.map((job) => (
+        <li class="job">
+          <div class="meta">
+            <p class="period">
+              <time datetime={job.start}>{formatYearMonth(job.start, locale)}</time>
+              {" – "}
+              {job.end ? (
+                <time datetime={job.end}>{formatYearMonth(job.end, locale)}</time>
+              ) : (
+                <span>{t("experience.present")}</span>
+              )}
+            </p>
+            <p class="type">{job.employmentType}</p>
+          </div>
+          <div class="body">
+            <h3>{job.role}</h3>
+            <p class="company">
+              {job.company} · {job.location}
+            </p>
+            <p class="summary">{job.summary}</p>
+            <ul class="highlights">
+              {job.highlights.map((h) => (
+                <li>{h}</li>
+              ))}
+            </ul>
+            <ul class="tags" aria-label="Stack">
+              {job.stack.map((s) => (
+                <li class="tag">{s}</li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 2.75rem;
+  }
+  .job {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 1.5rem;
+  }
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding-top: 0.25rem;
+  }
+  .period {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .body {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--border);
+  }
+  .body::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: 0.45rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--bg);
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  .company {
+    margin-top: 0.2rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .summary {
+    margin-top: 0.8rem;
+    color: var(--muted);
+  }
+  .highlights {
+    margin: 1rem 0 1.2rem;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .highlights li::marker {
+    color: var(--accent);
+  }
+  @media (max-width: 760px) {
+    .job {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .meta {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+</style>
