@@ -147,9 +147,15 @@ const t = useTranslations(locale);
     .grid {
       grid-template-columns: 1fr;
     }
-    .photo {
+    /* <picture> é renderizado pelo componente Picture (fora do escopo deste CSS). */
+    .grid :global(picture) {
       order: -1;
-      width: 160px;
+    }
+    .photo {
+      width: 140px;
+    }
+    .metrics li {
+      padding: 0.85rem 1rem;
     }
     .metrics {
       grid-template-columns: 1fr;
