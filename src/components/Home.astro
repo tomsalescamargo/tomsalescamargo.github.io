@@ -5,6 +5,7 @@ import Base from "../layouts/Base.astro";
 import Hero from "./Hero.astro";
 import About from "./About.astro";
 import Experience from "./Experience.astro";
+import Projects from "./Projects.astro";
 
 interface Props {
   locale: Locale;
@@ -17,4 +18,5 @@ const profile = getProfile(locale);
   <Hero profile={profile} locale={locale} />
   <About profile={profile} locale={locale} />
   <Experience profile={profile} locale={locale} />
+  <Projects profile={profile} locale={locale} />
 </Base>
