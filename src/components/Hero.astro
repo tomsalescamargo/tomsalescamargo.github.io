@@ -1,0 +1,158 @@
+---
+import { Picture } from "astro:assets";
+import type { Profile, Locale } from "../data/types";
+import { useTranslations } from "../i18n/ui";
+import Icon from "./Icon.astro";
+import photo from "../assets/tom.png";
+
+interface Props {
+  profile: Profile;
+  locale: Locale;
+}
+const { profile, locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container grid">
+    <div class="intro">
+      <p class="eyebrow">
+        <Icon name="pin" />
+        {profile.location}
+      </p>
+      <h1 id="hero-title">{profile.name}</h1>
+      <p class="role">{profile.role}</p>
+      <p class="headline">{profile.headline}</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#projetos">
+          {t("hero.projects")}
+        </a>
+        <a class="btn" href={profile.cv} download>
+          <Icon name="download" />
+          {t("hero.cv")}
+        </a>
+        <a class="btn icon-btn" href={profile.github} aria-label="GitHub">
+          <Icon name="github" />
+        </a>
+        <a class="btn icon-btn" href={profile.linkedin} aria-label="LinkedIn">
+          <Icon name="linkedin" />
+        </a>
+        <a class="btn icon-btn" href={`mailto:${profile.email}`} aria-label="E-mail">
+          <Icon name="mail" />
+        </a>
+      </div>
+    </div>
+    <Picture
+      src={photo}
+      alt={t("hero.photoAlt")}
+      widths={[220, 320, 440]}
+      sizes="(max-width: 760px) 220px, 320px"
+      formats={["avif", "webp"]}
+      class="photo"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+  <div class="container">
+    <ul class="metrics">
+      {profile.metrics.map((m) => (
+        <li>
+          <strong>{m.value}</strong>
+          <span>{m.label}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(3rem, 9vw, 6rem) clamp(2.5rem, 6vw, 4rem);
+    background:
+      radial-gradient(60rem 30rem at 85% -10%, var(--accent-soft), transparent 60%), var(--bg);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: clamp(2rem, 6vw, 4rem);
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+    font-weight: 800;
+  }
+  .role {
+    margin-top: 0.6rem;
+    font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .headline {
+    margin-top: 1.1rem;
+    max-width: 38rem;
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.8rem;
+  }
+  .icon-btn {
+    padding: 0;
+    width: 2.75rem;
+    justify-content: center;
+  }
+  .photo {
+    width: 320px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--surface);
+    box-shadow: var(--shadow);
+  }
+  .metrics {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: clamp(2.5rem, 6vw, 3.5rem);
+  }
+  .metrics li {
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+  .metrics strong {
+    display: block;
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+  }
+  .metrics span {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+  @media (max-width: 760px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .photo {
+      order: -1;
+      width: 160px;
+    }
+    .metrics {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
