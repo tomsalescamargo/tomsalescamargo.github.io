@@ -46,7 +46,7 @@ const pt: Profile = {
         "Implementei produtores e consumidores Apache Kafka para eventos de auditoria, com retry, idempotência e dead-letter queue (~50 mil eventos por dia).",
         "Desenvolvi fluxos de autenticação com OAuth 2.0, OpenID Connect e JWT (Spring Security, Keycloak), seguindo OWASP e LGPD.",
         "Refatorei um módulo legado com Clean Architecture e SOLID e documentei as APIs com OpenAPI (Swagger).",
-        "Elevei a cobertura de testes de 55% para 85% (JUnit 5, Mockito, Testcontainers) e reduzi o pipeline de CI/CD (GitLab CI, SonarQube) de 40 para 12 minutos.",
+        "Elevei a cobertura de testes de 55% para 85% (JUnit 5, Mockito, Testcontainers) e reduzi o pipeline de CI/CD (GitLab CI, SonarQube) de 40 para 25 minutos.",
       ],
       stack: [
         "Java 17",
@@ -69,7 +69,7 @@ const pt: Profile = {
         "Área de inovação (Labs): projetos de e-commerce de ponta a ponta, da arquitetura ao deploy na AWS, com foco em back-end Java, integração de sistemas e cloud.",
       highlights: [
         "Arquitetei e construí do zero a integração entre lojas VTEX e o TikTok Shop (catálogo, pedidos e estoque via APIs REST e webhooks), com microsserviços orientados a eventos e mais de 50 mil SKUs sincronizados.",
-        "Implementei a solução na AWS com arquitetura serverless (Lambda, API Gateway, SQS, S3, RDS) e infraestrutura como código em Terraform, reduzindo o custo de infraestrutura em ~30%.",
+        "Migrei a solução, que estava na VTEX, para a AWS, rearquitetando vários componentes em arquitetura serverless (Lambda, API Gateway, SQS, S3, RDS) com infraestrutura como código em Terraform e reduzindo o tempo médio de resposta em ~40%.",
         "Otimizei consultas SQL e índices no PostgreSQL (Spring Data JPA), reduzindo a rotina de sincronização de 12 para 3 minutos.",
         "Mantive e evoluí um sistema interno de grande porte em Java e Spring Boot, com Docker, JUnit, Mockito, CI/CD no GitHub Actions e code review em time Scrum.",
         "Trabalhei com Kotlin, RabbitMQ, MySQL, Oracle e SQL Server em outros projetos da área e prototipei soluções de IA generativa com Spring AI (LLMs e RAG).",
@@ -301,7 +301,7 @@ const en: Profile = {
         "Implemented Apache Kafka producers and consumers for audit events with retries, idempotency and a dead-letter queue (~50K events per day).",
         "Built authentication flows with OAuth 2.0, OpenID Connect and JWT (Spring Security, Keycloak), following OWASP and LGPD.",
         "Refactored a legacy module with Clean Architecture and SOLID and documented its APIs with OpenAPI (Swagger).",
-        "Raised test coverage from 55% to 85% (JUnit 5, Mockito, Testcontainers) and cut the CI/CD pipeline (GitLab CI, SonarQube) from 40 to 12 minutes.",
+        "Raised test coverage from 55% to 85% (JUnit 5, Mockito, Testcontainers) and cut the CI/CD pipeline (GitLab CI, SonarQube) from 40 to 25 minutes.",
       ],
     },
     {
@@ -313,7 +313,7 @@ const en: Profile = {
         "Innovation team (Labs): end-to-end e-commerce projects, from architecture to deployment on AWS, focused on Java back-end, systems integration and cloud.",
       highlights: [
         "Designed and built from scratch a VTEX–TikTok Shop integration (catalog, orders and inventory via REST APIs and webhooks) with event-driven microservices and 50K+ SKUs in sync.",
-        "Deployed the solution as serverless on AWS (Lambda, API Gateway, SQS, S3, RDS) with Terraform as infrastructure as code, at ~30% lower infrastructure cost.",
+        "Migrated the solution, which was on VTEX, to AWS, re-architecting several components into a serverless architecture (Lambda, API Gateway, SQS, S3, RDS) with Terraform as infrastructure as code and cutting average response time by ~40%.",
         "Optimized SQL queries and PostgreSQL indexes (Spring Data JPA), cutting a sync job from 12 to 3 minutes.",
         "Maintained and evolved a large internal Java/Spring Boot system with Docker, JUnit, Mockito, GitHub Actions CI/CD and code reviews in a Scrum team.",
         "Worked with Kotlin, RabbitMQ, MySQL, Oracle and SQL Server on other projects and prototyped generative AI features with Spring AI (LLMs, RAG).",
