@@ -22,13 +22,15 @@ const t = useTranslations(locale);
         <Icon name="mail" />
         {t("contact.email")}
       </a>
-      <a class="btn" href={profile.linkedin}>
+      <a class="btn" href={profile.linkedin} target="_blank" rel="noopener noreferrer">
         <Icon name="linkedin" />
         LinkedIn
+        <span class="visually-hidden"> {t("newTab")}</span>
       </a>
-      <a class="btn" href={profile.github}>
+      <a class="btn" href={profile.github} target="_blank" rel="noopener noreferrer">
         <Icon name="github" />
         GitHub
+        <span class="visually-hidden"> {t("newTab")}</span>
       </a>
       <a class="btn" href={profile.cv} download>
         <Icon name="download" />

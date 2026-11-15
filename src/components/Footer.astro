@@ -14,8 +14,13 @@ const year = new Date().getFullYear();
     <p>© {year} Tom Sales Soares de Camargo</p>
     <p>
       {t("footer.built")}
-      <a href="https://github.com/tomsalescamargo/tomsalescamargo.github.io">
+      <a
+        href="https://github.com/tomsalescamargo/tomsalescamargo.github.io"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {t("footer.source")}
+        <span class="visually-hidden"> {t("newTab")}</span>
       </a>
     </p>
   </div>

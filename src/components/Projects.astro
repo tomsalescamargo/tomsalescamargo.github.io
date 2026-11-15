@@ -52,16 +52,20 @@ const repoName = (p: Project) => p.repo.replace("https://github.com/", "");
               ))}
             </ul>
             <div class="links">
-              <a href={p.repo}>
+              <a href={p.repo} target="_blank" rel="noopener noreferrer">
                 <Icon name="github" />
                 {t("projects.code")}
-                <span class="visually-hidden">: {repoName(p)}</span>
+                <span class="visually-hidden">
+                  : {repoName(p)} {t("newTab")}
+                </span>
               </a>
               {p.demo && (
-                <a href={p.demo}>
+                <a href={p.demo} target="_blank" rel="noopener noreferrer">
                   <Icon name="play" />
                   {t("projects.demo")}
-                  <span class="visually-hidden">: {p.name}</span>
+                  <span class="visually-hidden">
+                    : {p.name} {t("newTab")}
+                  </span>
                 </a>
               )}
             </div>
@@ -76,8 +80,9 @@ const repoName = (p: Project) => p.repo.replace("https://github.com/", "");
         <ul class="more">
           {others.map((p) => (
             <li>
-              <a href={p.repo} class="more-name">
+              <a href={p.repo} class="more-name" target="_blank" rel="noopener noreferrer">
                 {p.name}
+                <span class="visually-hidden"> {t("newTab")}</span>
               </a>
               <p>{p.tagline}.</p>
               <p class="context">{p.context}</p>

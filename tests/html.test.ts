@@ -39,6 +39,19 @@ describe.skipIf(!built)("built HTML", () => {
         for (const id of anchors) expect(html).toContain(`id="${id}"`);
       });
 
+      it("opens external links in a new tab, safely and with a screen reader hint", () => {
+        const external = (html.match(/<a\b[^>]*href="https?:\/\/[^"]*"[^>]*>.*?<\/a>/gs) ?? [])
+          // links do próprio site (hreflang, troca de idioma) abrem na mesma aba
+          .filter((a) => !a.includes('href="https://tomsalescamargo.github.io'));
+        expect(external.length).toBeGreaterThan(0);
+        const hint = locale === "pt" ? "abre em nova aba" : "opens in a new tab";
+        for (const a of external) {
+          expect(a).toMatch(/target="_blank"/);
+          expect(a).toMatch(/rel="noopener noreferrer"/);
+          expect(a).toContain(hint);
+        }
+      });
+
       it("ships valid JSON-LD", () => {
         const match = html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s);
         expect(match).not.toBeNull();

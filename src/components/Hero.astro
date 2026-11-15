@@ -31,10 +31,22 @@ const t = useTranslations(locale);
           <Icon name="download" />
           {t("hero.cv")}
         </a>
-        <a class="btn icon-btn" href={profile.github} aria-label="GitHub">
+        <a
+          class="btn icon-btn"
+          href={profile.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`GitHub ${t("newTab")}`}
+        >
           <Icon name="github" />
         </a>
-        <a class="btn icon-btn" href={profile.linkedin} aria-label="LinkedIn">
+        <a
+          class="btn icon-btn"
+          href={profile.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`LinkedIn ${t("newTab")}`}
+        >
           <Icon name="linkedin" />
         </a>
         <a class="btn icon-btn" href={`mailto:${profile.email}`} aria-label="E-mail">

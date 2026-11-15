@@ -39,8 +39,9 @@ const t = useTranslations(locale);
             {c.issuer} · <time datetime={c.date}>{formatYearMonth(c.date, locale)}</time>
           </p>
           {c.note && <p class="details">{c.note}</p>}
-          <a href={c.url} class="cred">
+          <a href={c.url} class="cred" target="_blank" rel="noopener noreferrer">
             {t("certifications.view")} <Icon name="external" />
+            <span class="visually-hidden"> {t("newTab")}</span>
           </a>
         </div>
       ))}
