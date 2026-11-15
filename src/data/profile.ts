@@ -6,7 +6,7 @@ import type { Locale, Profile } from "./types";
 
 const github = "https://github.com/tomsalescamargo";
 const linkedin = "https://www.linkedin.com/in/tom-sales-camargo";
-const email = "tomsalescama@gmail.com";
+const email = "tomsalescamargo@gmail.com";
 
 const pt: Profile = {
   name: "Tom Sales Soares de Camargo",
