@@ -1,0 +1,30 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base locale="pt">
+  <section class="container nf">
+    <p class="code">404</p>
+    <h1>Página não encontrada · Page not found</h1>
+    <p>
+      <a href="/">Voltar ao início</a> · <a href="/en/">Back to home</a>
+    </p>
+  </section>
+</Base>
+
+<style>
+  .nf {
+    display: grid;
+    gap: 1rem;
+    padding-block: 6rem;
+    text-align: center;
+  }
+  .code {
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    color: var(--accent);
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+</style>
