@@ -148,13 +148,14 @@ const links = [
     border-color: var(--accent);
     color: var(--text);
   }
-  .icon-sun {
+  /* O SVG é renderizado pelo componente Icon, fora do escopo deste CSS: por isso :global(). */
+  .theme-toggle :global(.icon-sun) {
     display: none;
   }
-  :global(:root[data-theme="dark"]) .icon-sun {
+  :global(:root[data-theme="dark"]) .theme-toggle :global(.icon-sun) {
     display: block;
   }
-  :global(:root[data-theme="dark"]) .icon-moon {
+  :global(:root[data-theme="dark"]) .theme-toggle :global(.icon-moon) {
     display: none;
   }
   @media (max-width: 760px) {
