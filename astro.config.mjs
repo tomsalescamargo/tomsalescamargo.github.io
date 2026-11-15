@@ -12,7 +12,7 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      i18n: { defaultLocale: "pt", locales: { pt: "pt-BR", en: "en-US" } },
+      i18n: { defaultLocale: "pt", locales: { pt: "pt-BR", en: "en" } },
     }),
   ],
 });
