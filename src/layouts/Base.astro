@@ -1,0 +1,58 @@
+---
+import "@fontsource-variable/inter";
+import "@fontsource/jetbrains-mono/500.css";
+import "../styles/global.css";
+import type { Locale } from "../data/types";
+import { homePath, htmlLang, locales, useTranslations } from "../i18n/ui";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const site = Astro.site!;
+const canonical = new URL(homePath(locale), site).href;
+---
+
+<!doctype html>
+<html lang={htmlLang[locale]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t("meta.title")}</title>
+    <meta name="description" content={t("meta.description")} />
+    <meta name="author" content="Tom Sales Soares de Camargo" />
+    <link rel="canonical" href={canonical} />
+    {locales.map((l) => (
+      <link rel="alternate" hreflang={htmlLang[l]} href={new URL(homePath(l), site).href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL("/", site).href} />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a1120" media="(prefers-color-scheme: dark)" />
+    <meta name="generator" content={Astro.generator} />
+    <slot name="head" />
+    <script is:inline>
+      // Aplica o tema antes da pintura para não piscar: escolha salva > preferência do sistema.
+      (() => {
+        let saved = null;
+        try {
+          saved = localStorage.getItem("theme");
+        } catch {}
+        const dark = saved ? saved === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">
+      {t("skip")}
+    </a>
+    <Header locale={locale} />
+    <main id="conteudo">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>
