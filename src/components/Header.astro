@@ -1,0 +1,168 @@
+---
+import type { Locale } from "../data/types";
+import { homePath, useTranslations } from "../i18n/ui";
+import Icon from "./Icon.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const other: Locale = locale === "pt" ? "en" : "pt";
+const links = [
+  { href: "#sobre", label: t("nav.about") },
+  { href: "#experiencia", label: t("nav.experience") },
+  { href: "#projetos", label: t("nav.projects") },
+  { href: "#habilidades", label: t("nav.skills") },
+  { href: "#contato", label: t("nav.contact") },
+];
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href={homePath(locale)} aria-label="Tom Sales — início">
+      <span class="brand-mark" aria-hidden="true">
+        TS
+      </span>
+      <span class="brand-name">Tom Sales</span>
+    </a>
+    <nav aria-label={t("nav.label")}>
+      <ul class="nav-links">
+        {links.map((l) => (
+          <li>
+            <a href={l.href}>{l.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="actions">
+      <a
+        class="lang"
+        href={homePath(other)}
+        hreflang={other === "pt" ? "pt-BR" : "en"}
+        lang={other === "pt" ? "pt-BR" : "en"}
+        aria-label={t("lang.switchLabel")}
+      >
+        {other.toUpperCase()}
+      </a>
+      <button class="theme-toggle" type="button" aria-label={t("theme.toggle")} data-theme-toggle>
+        <Icon name="moon" class="icon icon-moon" />
+        <Icon name="sun" class="icon icon-sun" />
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const root = document.documentElement;
+  for (const button of document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]")) {
+    button.addEventListener("click", () => {
+      const next = root.dataset.theme === "dark" ? "light" : "dark";
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem("theme", next);
+      } catch {
+        /* armazenamento indisponível: o tema vale só nesta visita */
+      }
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 4rem;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 8px;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+  nav {
+    margin-inline-start: auto;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+  }
+  .nav-links a {
+    display: block;
+    padding: 0.45rem 0.7rem;
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 0.93rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .nav-links a:hover {
+    color: var(--text);
+    background: var(--surface);
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .lang,
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding: 0 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text);
+    font: 600 0.8rem var(--font-mono);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .lang:hover,
+  .theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .icon-sun {
+    display: none;
+  }
+  :global(:root[data-theme="dark"]) .icon-sun {
+    display: block;
+  }
+  :global(:root[data-theme="dark"]) .icon-moon {
+    display: none;
+  }
+  @media (max-width: 760px) {
+    nav {
+      display: none;
+    }
+    .actions {
+      margin-inline-start: auto;
+    }
+  }
+</style>

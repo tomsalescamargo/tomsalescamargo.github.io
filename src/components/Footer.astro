@@ -1,0 +1,37 @@
+---
+import type { Locale } from "../data/types";
+import { useTranslations } from "../i18n/ui";
+
+interface Props {
+  locale: Locale;
+}
+const t = useTranslations(Astro.props.locale);
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container row">
+    <p>© {year} Tom Sales Soares de Camargo</p>
+    <p>
+      {t("footer.built")}
+      <a href="https://github.com/tomsalescamargo/tomsalescamargo.github.io">
+        {t("footer.source")}
+      </a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding-block: 2rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+  }
+</style>

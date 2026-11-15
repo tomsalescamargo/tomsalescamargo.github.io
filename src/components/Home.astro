@@ -1,0 +1,13 @@
+---
+import type { Locale } from "../data/types";
+import Base from "../layouts/Base.astro";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<Base locale={locale}>
+  <div class="container"></div>
+</Base>
