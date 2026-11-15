@@ -1,13 +1,18 @@
 ---
 import type { Locale } from "../data/types";
+import { getProfile } from "../data/profile";
 import Base from "../layouts/Base.astro";
+import Hero from "./Hero.astro";
+import About from "./About.astro";
 
 interface Props {
   locale: Locale;
 }
 const { locale } = Astro.props;
+const profile = getProfile(locale);
 ---
 
 <Base locale={locale}>
-  <div class="container"></div>
+  <Hero profile={profile} locale={locale} />
+  <About profile={profile} locale={locale} />
 </Base>
