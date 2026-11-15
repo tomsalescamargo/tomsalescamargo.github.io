@@ -1,0 +1,114 @@
+---
+import type { Profile, Locale } from "../data/types";
+import { formatYearMonth, useTranslations } from "../i18n/ui";
+import Icon from "./Icon.astro";
+
+interface Props {
+  profile: Profile;
+  locale: Locale;
+}
+const { profile, locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="formacao" class="section" aria-labelledby="formacao-title">
+  <div class="container cols">
+    <div>
+      <h2 id="formacao-title" class="section-title" data-index="05.">
+        {t("education.title")}
+      </h2>
+      {profile.education.map((e) => (
+        <div class="item">
+          <h3>{e.degree}</h3>
+          <p class="org">{e.school}</p>
+          <p class="period">
+            <time datetime={e.start}>{formatYearMonth(e.start, locale)}</time> –{" "}
+            <time datetime={e.end}>{formatYearMonth(e.end, locale)}</time>
+            {e.expected && ` (${t("education.expected")})`}
+          </p>
+          <p class="details">{e.details}</p>
+        </div>
+      ))}
+    </div>
+    <div class="side">
+      <h3 class="side-title">{t("certifications.title")}</h3>
+      {profile.certifications.map((c) => (
+        <div class="item">
+          <p class="name">{c.name}</p>
+          <p class="org">
+            {c.issuer} · <time datetime={c.date}>{formatYearMonth(c.date, locale)}</time>
+          </p>
+          {c.note && <p class="details">{c.note}</p>}
+          <a href={c.url} class="cred">
+            {t("certifications.view")} <Icon name="external" />
+          </a>
+        </div>
+      ))}
+      <h3 class="side-title">{t("languages.title")}</h3>
+      <ul class="langs">
+        {profile.languages.map((l) => (
+          <li>{l}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cols {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 2.5rem;
+  }
+  .item {
+    display: grid;
+    gap: 0.3rem;
+    margin-bottom: 1.5rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+  .org {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .period {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .details {
+    color: var(--muted);
+  }
+  .side {
+    padding-top: 0.5rem;
+  }
+  .side-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 0.9rem;
+  }
+  .name {
+    font-weight: 700;
+  }
+  .cred {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .langs {
+    list-style: none;
+    display: grid;
+    gap: 0.3rem;
+  }
+  @media (max-width: 760px) {
+    .cols {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+</style>
