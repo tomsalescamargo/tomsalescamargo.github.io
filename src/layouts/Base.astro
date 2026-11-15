@@ -6,6 +6,7 @@ import type { Locale } from "../data/types";
 import { homePath, htmlLang, locales, useTranslations } from "../i18n/ui";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Seo from "../components/Seo.astro";
 
 interface Props {
   locale: Locale;
@@ -32,6 +33,7 @@ const canonical = new URL(homePath(locale), site).href;
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0a1120" media="(prefers-color-scheme: dark)" />
     <meta name="generator" content={Astro.generator} />
+    <Seo locale={locale} />
     <slot name="head" />
     <script is:inline>
       // Aplica o tema antes da pintura para não piscar: escolha salva > preferência do sistema.

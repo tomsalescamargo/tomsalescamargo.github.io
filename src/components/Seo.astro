@@ -1,0 +1,58 @@
+---
+/** Open Graph, Twitter Card e dados estruturados (schema.org/Person) para Google e redes. */
+import type { Locale } from "../data/types";
+import { getProfile } from "../data/profile";
+import { homePath, ogLocale, useTranslations } from "../i18n/ui";
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const profile = getProfile(locale);
+const site = Astro.site!;
+const url = new URL(homePath(locale), site).href;
+const image = new URL("/og-image.png", site).href;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  alternateName: profile.shortName,
+  jobTitle: profile.role,
+  url,
+  image: new URL("/apple-touch-icon.png", site).href,
+  email: `mailto:${profile.email}`,
+  sameAs: [profile.linkedin, profile.github],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Florianópolis",
+    addressRegion: "SC",
+    addressCountry: "BR",
+  },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Universidade Federal de Santa Catarina" },
+  knowsLanguage: ["pt-BR", "en"],
+  knowsAbout: profile.skills.flatMap((g) => g.items).slice(0, 20),
+};
+---
+
+<meta property="og:type" content="profile" />
+<meta property="og:site_name" content={profile.name} />
+<meta property="og:title" content={t("meta.title")} />
+<meta property="og:description" content={t("meta.description")} />
+<meta property="og:url" content={url} />
+<meta property="og:locale" content={ogLocale[locale]} />
+<meta property="og:image" content={image} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={`${profile.name} — ${profile.role}`} />
+<meta property="profile:first_name" content="Tom" />
+<meta property="profile:last_name" content="Sales Soares de Camargo" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={t("meta.title")} />
+<meta name="twitter:description" content={t("meta.description")} />
+<meta name="twitter:image" content={image} />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
