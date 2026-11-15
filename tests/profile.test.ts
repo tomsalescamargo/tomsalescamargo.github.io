@@ -11,7 +11,7 @@ describe("profile data", () => {
     expect(en.experiences).toHaveLength(pt.experiences.length);
     expect(en.projects.map((p) => p.slug)).toEqual(pt.projects.map((p) => p.slug));
     expect(en.skills).toHaveLength(pt.skills.length);
-    expect(en.metrics).toHaveLength(pt.metrics.length);
+    expect(en.facts).toHaveLength(pt.facts.length);
   });
 
   it("keeps dates, links and highlight counts identical across languages", () => {

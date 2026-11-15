@@ -54,9 +54,10 @@ export interface Certification {
   note?: string;
 }
 
-export interface Metric {
-  value: string;
+/** Fato curto sobre o Tom exibido no topo da página (ex.: "Hoje" → "Back-end no idRC"). */
+export interface Fact {
   label: string;
+  value: string;
 }
 
 export interface Profile {
@@ -69,7 +70,7 @@ export interface Profile {
   github: string;
   linkedin: string;
   cv: string;
-  metrics: Metric[];
+  facts: Fact[];
   about: string[];
   experiences: Experience[];
   projects: Project[];

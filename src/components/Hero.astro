@@ -54,14 +54,14 @@ const t = useTranslations(locale);
     />
   </div>
   <div class="container">
-    <ul class="metrics">
-      {profile.metrics.map((m) => (
-        <li>
-          <strong>{m.value}</strong>
-          <span>{m.label}</span>
-        </li>
+    <dl class="facts">
+      {profile.facts.map((f) => (
+        <div>
+          <dt>{f.label}</dt>
+          <dd>{f.value}</dd>
+        </div>
       ))}
-    </ul>
+    </dl>
   </div>
 </section>
 
@@ -121,27 +121,29 @@ const t = useTranslations(locale);
     border: 4px solid var(--surface);
     box-shadow: var(--shadow);
   }
-  .metrics {
-    list-style: none;
+  .facts {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    margin-top: clamp(2.5rem, 6vw, 3.5rem);
+    margin: clamp(2.5rem, 6vw, 3.5rem) 0 0;
   }
-  .metrics li {
+  .facts div {
     padding: 1.1rem 1.25rem;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     background: var(--surface);
   }
-  .metrics strong {
-    display: block;
-    font-size: 1.6rem;
-    letter-spacing: -0.02em;
+  .facts dt {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
   }
-  .metrics span {
-    color: var(--muted);
-    font-size: 0.92rem;
+  .facts dd {
+    margin: 0.35rem 0 0;
+    font-weight: 600;
+    line-height: 1.4;
   }
   @media (max-width: 760px) {
     .grid {
@@ -154,10 +156,10 @@ const t = useTranslations(locale);
     .photo {
       width: 140px;
     }
-    .metrics li {
+    .facts div {
       padding: 0.85rem 1rem;
     }
-    .metrics {
+    .facts {
       grid-template-columns: 1fr;
     }
   }

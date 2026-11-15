@@ -13,16 +13,16 @@ const pt: Profile = {
   shortName: "Tom Sales",
   role: "Desenvolvedor Backend Java Júnior",
   headline:
-    "Construo microsserviços com Java e Spring Boot para sistemas de alta criticidade. Hoje trabalho no idRC, a identidade digital do Registro Civil brasileiro.",
+    "Desenvolvo microsserviços e APIs REST com Java e Spring Boot, com foco em autenticação, integração de sistemas e cloud (AWS).",
   location: "Florianópolis, SC",
   email,
   github,
   linkedin,
   cv: "/cv/Tom-Sales-Camargo-Backend-Java-Jr.pdf",
-  metrics: [
-    { value: "~300 mil", label: "autenticações por dia no sistema em que trabalho" },
-    { value: "2+ anos", label: "com Java em produção" },
-    { value: "~7.600", label: "cartórios onde a identidade digital é válida" },
+  facts: [
+    { label: "Experiência", value: "2+ anos com Java em produção" },
+    { label: "Hoje", value: "Back-end no idRC, a identidade digital do Registro Civil" },
+    { label: "Formação", value: "Sistemas de Informação na UFSC · IAA 9,08" },
   ],
   // Mesmo texto do "Sobre" do LinkedIn (os destaques em tópicos ficam na seção Experiência).
   about: [
@@ -273,13 +273,13 @@ const en: Profile = {
   ...pt,
   role: "Junior Backend Developer (Java)",
   headline:
-    "I build Java and Spring Boot microservices for mission-critical systems. Currently working on idRC, the digital identity of Brazil's Civil Registry.",
+    "I build microservices and REST APIs with Java and Spring Boot, focused on authentication, systems integration and cloud (AWS).",
   location: "Florianópolis, Brazil",
   cv: "/cv/Tom-Sales-Camargo-Backend-Java-Developer-EN.pdf",
-  metrics: [
-    { value: "~300K", label: "authentications per day on the system I work on" },
-    { value: "2+ years", label: "of Java in production" },
-    { value: "~7,600", label: "registry offices where the digital ID is valid" },
+  facts: [
+    { label: "Experience", value: "2+ years of Java in production" },
+    { label: "Currently", value: "Back-end at idRC, the digital ID of Brazil's Civil Registry" },
+    { label: "Education", value: "Information Systems at UFSC · GPA 9.08/10" },
   ],
   about: [
     "Java back-end developer with 2+ years of production experience, building Spring Boot microservices for mission-critical systems. I currently work on idRC, the digital identity of Brazil's Civil Registry: authentication and data security at national scale, with ~300K authentications per day, integrated with gov.br (Brazil's federal login). Before that, a year and a half at Avanti building APIs and e-commerce integrations on AWS.",
