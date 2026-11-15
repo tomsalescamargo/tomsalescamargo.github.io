@@ -128,10 +128,10 @@ const repoName = (p: Project) => p.repo.replace("https://github.com/", "");
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    align-items: center;
   }
-  /* A prévia é 2:1 e tem texto: mostrar inteira (sem corte), emoldurada ao lado do texto. */
+  /* A prévia é 2:1 e tem texto: mostrar inteira (sem corte), alinhada ao título do projeto. */
   .cover {
+    align-self: start;
     width: calc(100% - 3rem);
     height: auto;
     aspect-ratio: 2 / 1;
