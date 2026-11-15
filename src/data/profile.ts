@@ -24,10 +24,11 @@ const pt: Profile = {
     { value: "2+ anos", label: "com Java em produção" },
     { value: "~7.600", label: "cartórios onde a identidade digital é válida" },
   ],
+  // Mesmo texto do "Sobre" do LinkedIn (os destaques em tópicos ficam na seção Experiência).
   about: [
-    "Sou desenvolvedor back-end Java e tenho mais de 2 anos de experiência em produção, construindo microsserviços com Spring Boot, APIs REST e bancos relacionais para sistemas em que cada decisão técnica afeta a segurança e a disponibilidade do serviço.",
-    "No idRC, a identidade digital do Registro Civil brasileiro, trabalho com autenticação e segurança de dados em nível nacional: ~300 mil autenticações por dia, integração com o gov.br e validade nos ~7.600 cartórios do país. Antes, passei 2 anos na área de inovação da Avanti, onde arquitetei integrações de e-commerce na AWS.",
-    "Participo de todo o ciclo, da implementação e dos testes ao code review, deploy e monitoramento. Uso IA generativa no dia a dia, sempre revisando e testando o código gerado. Curso Sistemas de Informação na UFSC (IAA 9,08/10).",
+    "Desenvolvedor back-end Java com mais de 2 anos de experiência em produção, construindo microsserviços com Spring Boot para sistemas de alta criticidade. Hoje atuo no idRC, a identidade digital do Registro Civil brasileiro: autenticação e segurança de dados em nível nacional, com ~300 mil autenticações por dia, integrada ao gov.br. Antes, 1 ano e meio na Avanti desenvolvendo APIs e integrações de e-commerce na AWS.",
+    "Participo de todo o ciclo: implementação, testes, code review, deploy com Docker e Kubernetes e monitoramento com Prometheus e Grafana. Uso IA generativa (GitHub Copilot, Claude Code) no desenvolvimento, sempre revisando o código gerado.",
+    "Bacharelado em Sistemas de Informação na UFSC (noturno, IAA 9,08/10). Florianópolis, SC. Inglês profissional.",
   ],
   experiences: [
     {
@@ -62,7 +63,7 @@ const pt: Profile = {
       company: "Avanti E-commerce & Digital Marketing",
       location: "Florianópolis, SC",
       employmentType: "Estágio",
-      start: "2024-03",
+      start: "2024-10",
       end: "2026-03",
       summary:
         "Área de inovação (Labs): projetos de e-commerce de ponta a ponta, da arquitetura ao deploy na AWS, com foco em back-end Java, integração de sistemas e cloud.",
@@ -146,7 +147,6 @@ const pt: Profile = {
       ],
       repo: `${github}/prevenfire-iot`,
       demo: "https://www.youtube.com/shorts/2_A5JjWgkt4",
-      context: "Projeto acadêmico (UFSC)",
       featured: true,
     },
     {
@@ -282,9 +282,9 @@ const en: Profile = {
     { value: "~7,600", label: "registry offices where the digital ID is valid" },
   ],
   about: [
-    "I'm a Java back-end developer with 2+ years of production experience, building Spring Boot microservices, REST APIs and relational databases for systems where every technical decision affects security and availability.",
-    "At idRC, the digital identity of Brazil's Civil Registry, I work on authentication and data security at national scale: ~300K authentications per day, integration with gov.br (Brazil's federal login) and validity in ~7,600 registry offices. Before that, I spent 2 years on Avanti's innovation team, designing e-commerce integrations on AWS.",
-    "I work across the whole cycle, from implementation and testing to code review, deployment and monitoring. I use generative AI daily and always review and test the generated code. I study Information Systems at UFSC (GPA 9.08/10).",
+    "Java back-end developer with 2+ years of production experience, building Spring Boot microservices for mission-critical systems. I currently work on idRC, the digital identity of Brazil's Civil Registry: authentication and data security at national scale, with ~300K authentications per day, integrated with gov.br (Brazil's federal login). Before that, a year and a half at Avanti building APIs and e-commerce integrations on AWS.",
+    "I work across the whole cycle: implementation, testing, code review, deployment with Docker and Kubernetes, and monitoring with Prometheus and Grafana. I use generative AI (GitHub Copilot, Claude Code) in development and always review the generated code.",
+    "B.S. in Information Systems at UFSC (evening program, GPA 9.08/10). Florianópolis, Brazil. Professional working English.",
   ],
   experiences: [
     {
@@ -356,7 +356,6 @@ const en: Profile = {
         "PostgreSQL with database-per-service, orchestrated with Docker Compose, and JUnit 5/Mockito tests.",
         "React Native (Expo) mobile app and C firmware for the ESP32.",
       ],
-      context: "Academic project (UFSC)",
     },
     {
       ...pt.projects[3]!,
